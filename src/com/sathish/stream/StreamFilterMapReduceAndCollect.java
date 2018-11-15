@@ -10,7 +10,7 @@ import com.sathish.Person;
  * @author Sathish
  *
  */
-public class StreamFilterAndMapAndCollect {
+public class StreamFilterMapReduceAndCollect {
 
 	public static void main(String[] args) {
 
@@ -43,9 +43,15 @@ public class StreamFilterAndMapAndCollect {
 		System.out.println("name : " + name);
 		
 		List<String> names =personList.stream()
-							.map(Person::getName) //:: (method reference) operator as shorthand for lambdas calling a specific method – by name
+							.map(Person::getName) //:: (method reference) operator as shorthand for lambdas calling a specific method â€“ by name
 							.collect(Collectors.toList());
 		names.forEach(System.out::println);
+		
+		//Stream reduce()
+		Stream<Integer> numbers = Stream.of(1,2,3,4,5);
+			
+		Optional<Integer> intOptional = numbers.reduce((i,j) -> {return i*j;});
+		if(intOptional.isPresent()) System.out.println("Multiplication from reduce= "+intOptional.get());
 	}
 
 }
