@@ -325,7 +325,6 @@ Arrays.parallelSort(numbers);
 //converting the array to stream and displaying using forEach
 
 Arrays.stream(numbers).forEach(n-\>System.out.print(n+\" \"));
-<![endif]-->
 
 ## Java Date Time APIs
 
