@@ -34,7 +34,7 @@ public class DefaultAndStaticMethods implements MyDeafultAndStaticInterface{
 		//calling default method
 		obj.myDefaultMethod(); //if the same default method present in two interfaces that we implement, then we need to override that default method.
 		
-		//calling default method, which is referring the implemented class
+		//calling existingMethod method, which is referring the implemented class
 		obj.existingMethod();
 		
 		//calling static method
