@@ -2,9 +2,12 @@ package com.sathish.stream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.sathish.Person;
+import com.sathish.Student;
 /**
  * 
  * @author Sathish
@@ -41,6 +44,16 @@ public class StreamFilterMapReduceAndCollect {
 				.orElse(null);								// If not found, return null
 		
 		System.out.println("name : " + name);
+		
+		//map one object to an other class (get the data from person and assign to student)
+		List<Student> studentList = personList.stream()
+										.map(person-> {
+			Student student = new Student();
+			student.setName(person.getName());
+			student.setAge(person.getAge());
+			return student;
+			}).collect(Collectors.toList());
+		System.out.println("Student list : " + studentList);
 		
 		List<String> names =personList.stream()
 							.map(Person::getName) //:: (method reference) operator as shorthand for lambdas calling a specific method – by name

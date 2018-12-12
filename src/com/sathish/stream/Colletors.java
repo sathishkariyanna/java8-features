@@ -1,6 +1,7 @@
 package com.sathish.stream;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,10 +25,18 @@ public class Colletors {
 		
 		List<String> names = Arrays.asList("Sathish","Kariyanna","Sathish");
 		
-		//groupingBy and counting
-		Map<String,Long> map = names.stream()
+		//groupingBy and counting (groupingBy we can give on which colum we are doing grouping)
+		Map<String,Long> countMap = names.stream()
 				.collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
-		System.out.println(map);
+		System.out.println(countMap);
+		
+        //Sort a map and add to finalMap
+		Map<String, Long> finalMap = new LinkedHashMap<>();
+		countMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue()
+                        .reversed()).forEachOrdered(e -> finalMap.put(e.getKey(), e.getValue()));
+		System.out.println(" ******Sorted map ******");
+        System.out.println(finalMap);
 		
 		//Java Collectors Example – Getting the average age 
 		Double avgAge = personList.stream()				
